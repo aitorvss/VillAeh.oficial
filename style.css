@@ -1,0 +1,15 @@
+/* --- 1. Variables CSS (Paleta de Colores) --- */
+:root {
+    --color-fondo: #121212;
+    --color-superficie: #1e1e1e;
+    /* ... (Todo tu CSS sigue aquí) ... */
+}
+
+/* --- 2. Reseteo y Estilos Globales --- */
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo);
+    /* ... (Todo tu CSS sigue aquí) ... */
+}
+
+/* ... el resto de tu CSS ... */
