@@ -26,7 +26,6 @@ body {
     background-color: var(--color-fondo);
     color: var(--color-texto);
     line-height: 1.7;
-    /* Evita el scroll horizontal si algo se desborda */
     overflow-x: hidden;
 }
 
@@ -68,10 +67,6 @@ img {
     width: auto;
 }
 
-.logo span {
-    color: var(--color-primario);
-}
-
 .nav-principal ul {
     list-style: none;
     display: flex;
@@ -94,20 +89,17 @@ img {
     color: var(--color-texto);
 }
 
-/* ============================================= */
-/* ========= ESTILOS MENÚ HAMBURGUESA ========== */
-/* ============================================= */
 .menu-toggle-btn {
-    display: none; /* Oculto por defecto en escritorio */
-    font-size: 1.8em;
+    display: none;
+    font-size: 1.8rem; /* CAMBIO: em a rem */
     color: var(--color-texto);
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 110; /* Por encima del menú overlay */
+    z-index: 110;
 }
 
-/* --- 4. Sección "Hero" (El gran impacto inicial) --- */
+/* --- 4. Sección "Hero" --- */
 .seccion-hero {
     display: flex;
     flex-direction: column;
@@ -116,19 +108,18 @@ img {
     text-align: center;
     min-height: 60vh;
     padding: 40px 20px;
-    /* CORRECCIÓN: Quitada la barra / inicial para que la ruta sea relativa */
     background: linear-gradient(rgba(0,0,0,0.5), var(--color-fondo)), url('img/Home-studio-2.jpg') no-repeat center center/cover;
 }
 
 .hero-titulo {
-    font-size: 3.5em;
+    font-size: 3.5rem; /* CAMBIO: em a rem */
     font-weight: 700;
     margin-bottom: 15px;
     text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 .hero-subtitulo {
-    font-size: 1.5em;
+    font-size: 1.5rem; /* CAMBIO: em a rem */
     color: var(--color-texto-secundario);
     font-weight: 300;
     margin-bottom: 30px;
@@ -137,7 +128,7 @@ img {
 .cta-button {
     background: var(--color-primario);
     color: var(--color-texto);
-    font-size: 1.1em;
+    font-size: 1.1rem; /* CAMBIO: em a rem */
     font-weight: 600;
     padding: 15px 30px;
     border-radius: 50px;
@@ -152,7 +143,7 @@ img {
     color: var(--color-texto);
 }
 
-/* --- 5. Contenedor Principal (Con CSS Grid) --- */
+/* --- 5. Contenedor Principal (Grid) --- */
 .contenedor-grid {
     max-width: 1200px;
     margin: 50px auto;
@@ -165,18 +156,33 @@ img {
 .titulo-seccion {
     grid-column: 1 / -1;
     text-align: center;
-    font-size: 2.5em;
+    font-size: 2.5rem; /* CAMBIO: em a rem */
     margin-bottom: 20px;
     color: var(--color-primario);
 }
 
-/* --- 6. Tarjetas (Cards) --- */
-.card {
+.subtitulo-seccion {
+    text-align: center;
+    font-size: 1.2rem; /* CAMBIO: em a rem */
+    color: var(--color-texto-secundario);
+    margin-top: -20px;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* --- 6. Estilos de Tarjetas (Cards) --- */
+
+/* OPTIMIZACIÓN: Estilos base compartidos por .card y .beat-card */
+.card,
+.beat-card {
     background-color: var(--color-superficie);
     border-radius: 12px;
-    padding: 30px;
     border: 1px solid #282828;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.card {
+    padding: 30px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -186,128 +192,21 @@ img {
 }
 
 .card h3 {
-    font-size: 1.8em;
+    font-size: 1.8rem; /* CAMBIO: em a rem */
     color: var(--color-primario);
     margin-bottom: 15px;
 }
 
 .card p {
     color: var(--color-texto-secundario);
-    font-size: 0.95em;
+    font-size: 0.95rem; /* CAMBIO: em a rem */
 }
 
-/* --- 7. Pie de Página --- */
-.footer-principal {
-    text-align: center;
-    padding: 40px 20px;
-    margin-top: 50px;
-    background-color: var(--color-superficie);
-    border-top: 1px solid #333;
-    font-size: 0.9em;
-    color: var(--color-texto-secundario);
-}
-
-/* ============================================= */
-/* ========= RESPONSIVE Y MENÚ MÓVIL ========== */
-/* ============================================= */
-@media (max-width: 768px) {
-    
-    .header-principal {
-        /* Mantenemos el logo a la izq. y el icono a la der. */
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 5%; /* Ajustado el padding para móvil */
-    }
-
-    /* --- ESTILOS DEL MENÚ MÓVIL --- */
-
-    .menu-toggle-btn {
-        display: block; /* Mostramos el botón hamburguesa */
-    }
-
-    .nav-principal {
-        /* Convertimos el nav en un overlay a pantalla completa */
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100vh; /* Alto total de la pantalla */
-        background-color: rgba(18, 18, 18, 0.95); /* Fondo oscuro */
-        backdrop-filter: blur(10px);
-        
-        /* Oculto por defecto (movido a la derecha) */
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
-        
-        /* Centrar los enlaces verticalmente */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        
-        z-index: 105; /* Por debajo del botón (110) pero encima de todo */
-    }
-
-    .nav-principal.menu-abierto {
-        transform: translateX(0); /* Lo trae a la vista */
-    }
-
-    .nav-principal ul {
-        flex-direction: column; /* Apila los enlaces verticalmente */
-        align-items: center;
-        gap: 30px; /* Espacio entre enlaces */
-        margin-top: 0;
-        width: auto;
-    }
-    
-    .nav-principal li {
-        margin-left: 0; /* Reseteamos el margen de PC */
-    }
-
-    .nav-principal a {
-        /* Hacemos los enlaces grandes y fáciles de pulsar */
-        font-size: 1.8em;
-        padding: 15px 30px;
-    }
-
-    /* --- OTROS AJUSTES MÓVIL --- */
-
-    .hero-titulo {
-        font-size: 2.5em;
-    }
-
-    .hero-subtitulo {
-        font-size: 1.2em;
-    }
-
-    .sobre-mi-contenido {
-        flex-direction: column;
-    }
-    
-    .sobre-mi-texto {
-        text-align: center;
-    }
-
-    .sobre-mi-imagen {
-        width: 70%;
-        margin-bottom: 20px;
-    }
-}
-
-/* --- 9. Estilos de la Nueva Sección de Beats --- */
+/* --- 7. Sección de Beats --- */
 .seccion-beats {
     max-width: 1200px;
     margin: 50px auto;
     padding: 0 20px;
-}
-
-.subtitulo-seccion {
-    text-align: center;
-    font-size: 1.2em;
-    color: var(--color-texto-secundario);
-    margin-top: -20px;
-    margin-bottom: 40px;
-    font-weight: 300;
 }
 
 .beats-grid {
@@ -317,10 +216,6 @@ img {
 }
 
 .beat-card {
-    background-color: var(--color-superficie);
-    border-radius: 12px;
-    border: 1px solid #282828;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     overflow: hidden;
     transition: transform 0.3s ease;
 }
@@ -339,7 +234,7 @@ img {
 }
 
 .beat-titulo {
-    font-size: 1.6em;
+    font-size: 1.6rem; /* CAMBIO: em a rem */
     color: var(--color-primario);
     margin-bottom: 15px;
     font-weight: 600;
@@ -348,7 +243,7 @@ img {
 .beat-info {
     display: flex;
     justify-content: space-between;
-    font-size: 0.95em;
+    font-size: 0.95rem; /* CAMBIO: em a rem */
     color: var(--color-texto);
     border-top: 1px solid #333;
     padding-top: 15px;
@@ -364,7 +259,7 @@ img {
     margin-right: 8px;
 }
 
-/* --- 10. Estilos de la Nueva Sección "Sobre Mí" --- */
+/* --- 8. Sección "Sobre Mí" --- */
 .seccion-sobre-mi {
     max-width: 1200px;
     margin: 50px auto;
@@ -397,13 +292,13 @@ img {
 }
 
 .sobre-mi-texto h3 {
-    font-size: 2em;
+    font-size: 2rem; /* CAMBIO: em a rem */
     color: var(--color-primario);
     margin-bottom: 20px;
 }
 
 .sobre-mi-texto p {
-    font-size: 1.05em;
+    font-size: 1.05rem; /* CAMBIO: em a rem */
     color: var(--color-texto-secundario);
     margin-bottom: 20px;
 }
@@ -413,7 +308,7 @@ img {
     font-weight: 600;
 }
 
-/* --- 11. Estilos de la Nueva Sección "Contacto" --- */
+/* --- 9. Sección "Contacto" --- */
 .seccion-contacto {
     max-width: 900px;
     margin: 50px auto;
@@ -425,27 +320,74 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 50px; /* Espacio entre el formulario y las redes */
 }
 
-.email-button {
-    background: var(--color-superficie);
-    border: 2px solid var(--color-primario);
-    color: var(--color-primario);
-    font-size: 1.2em;
+/* --- ESTILOS DEL NUEVO FORMULARIO --- */
+.formulario-contacto {
     width: 100%;
-    max-width: 550px;
-    border-radius: 12px;
+    max-width: 600px; /* Ancho del formulario */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.email-button:hover {
-    background: var(--color-primario);
+.form-grupo {
+    text-align: left;
+    width: 100%;
+}
+
+.form-grupo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--color-texto-secundario);
+}
+
+.form-grupo input,
+.form-grupo textarea {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-superficie);
+    border: 1px solid #333;
+    border-radius: 8px;
     color: var(--color-texto);
-    box-shadow: 0 8px 25px rgba(var(--color-primario-rgb), 0.6);
+    font-family: var(--fuente-principal);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.email-button i {
-    margin-right: 12px;
+.form-grupo input:focus,
+.form-grupo textarea:focus {
+    /* Resalta el campo al hacer clic */
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 10px rgba(var(--color-primario-rgb), 0.3);
+}
+
+.form-grupo textarea {
+    resize: vertical; /* Permite al usuario cambiar el alto */
+    min-height: 120px;
+}
+
+/* El botón de envío usa la clase .cta-button que ya tenías,
+   pero le quitamos el borde-radius y le damos ancho completo */
+.formulario-contacto .cta-button {
+    border-radius: 8px; /* Más rectangular */
+    width: 100%;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* --- Estilos de las Redes Sociales (debajo del form) --- */
+.social-links-container {
+    text-align: center;
+}
+
+.social-links-container p {
+    font-size: 1.1rem;
+    color: var(--color-texto-secundario);
+    margin-bottom: 25px;
 }
 
 .social-links {
@@ -456,7 +398,7 @@ img {
 }
 
 .social-icon {
-    font-size: 2.8em;
+    font-size: 2.8rem;
     color: var(--color-texto-secundario);
     transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -465,7 +407,195 @@ img {
     transform: scale(1.2) translateY(-3px);
 }
 
+/* Colores específicos para cada red (al pasar el ratón) */
 .social-icon.instagram:hover { color: #E4405F; }
 .social-icon.youtube:hover { color: #FF0000; }
 .social-icon.tiktok:hover { color: #FFFFFF; }
 .social-icon.soundcloud:hover { color: #FF5500; }
+
+/* --- 10. Pie de Página --- */
+.footer-principal {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+    background-color: var(--color-superficie);
+    border-top: 1px solid #333;
+    font-size: 0.9rem; /* CAMBIO: em a rem */
+    color: var(--color-texto-secundario);
+}
+
+/* --- 11. Botón "Volver Arriba" --- */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--color-primario);
+    color: var(--color-texto);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem; /* CAMBIO: em a rem */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 8px 15px rgba(var(--color-primario-rgb), 0.4);
+}
+
+/* --- 12. Responsive y Menú Móvil --- */
+@media (max-width: 768px) {
+    
+    .header-principal {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 5%;
+    }
+
+    .menu-toggle-btn {
+        display: block;
+    }
+
+    .nav-principal {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(18, 18, 18, 0.95);
+        backdrop-filter: blur(10px);
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 105;
+    }
+
+    .nav-principal.menu-abierto {
+        transform: translateX(0);
+    }
+
+    .nav-principal ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        margin-top: 0;
+        width: auto;
+    }
+    
+    .nav-principal li {
+        margin-left: 0;
+    }
+
+    .nav-principal a {
+        font-size: 1.8rem; /* CAMBIO: em a rem */
+        padding: 15px 30px;
+    }
+
+    .hero-titulo {
+        font-size: 2.5rem; /* CAMBIO: em a rem */
+    }
+
+    .hero-subtitulo {
+        font-size: 1.2rem; /* CAMBIO: em a rem */
+    }
+
+    .sobre-mi-contenido {
+        flex-direction: column;
+    }
+    
+    .sobre-mi-texto {
+        text-align: center;
+    }
+
+    .sobre-mi-imagen {
+        width: 70%;
+        margin-bottom: 20px;
+    }
+}
+
+/* ============================================= */
+/* ========= SECCIÓN DE FAQ (NUEVA) ============ */
+/* ============================================= */
+.seccion-faq {
+    max-width: 900px; /* Igual que la sección de contacto */
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.faq-container {
+    border-top: 1px solid #333;
+}
+
+.faq-item {
+    border-bottom: 1px solid #333;
+}
+
+.faq-pregunta {
+    /* Estilos del botón */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 20px 0;
+    width: 100%;
+    
+    /* Alinear texto e icono */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* Estilos de texto */
+    color: var(--color-texto);
+    font-family: var(--fuente-principal);
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+.faq-pregunta span {
+    padding-right: 15px; /* Espacio para que el texto no toque el icono */
+}
+
+.faq-pregunta i {
+    color: var(--color-primario);
+    font-size: 1.1rem;
+    transition: transform 0.3s ease; /* Para animar el giro */
+}
+
+.faq-respuesta {
+    /* Oculto por defecto */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.faq-respuesta p {
+    color: var(--color-texto-secundario);
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0 10px 20px 0; /* Padding inferior y derecho */
+}
+
+/* --- ESTADO ACTIVO (se añade con JS) --- */
+
+.faq-item.activo .faq-pregunta i {
+    transform: rotate(180deg); /* Gira el icono */
+}
+
+.faq-item.activo .faq-respuesta {
+    max-height: 300px; /* Lo hace visible (ajusta si la respuesta es muy larga) */
+    padding-bottom: 10px;
+}
