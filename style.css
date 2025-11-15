@@ -295,3 +295,69 @@ img {
     font-weight: 400;
     margin-right: 8px;
 }
+
+/* --- 10. Estilos de la Nueva Sección "Sobre Mí" --- */
+
+.seccion-sobre-mi {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 40px 20px;
+    background-color: var(--color-superficie); /* Un fondo sutil para destacarla */
+    border-radius: 12px;
+    border: 1px solid #282828;
+}
+
+.sobre-mi-contenido {
+    display: flex;
+    align-items: center; /* Centra verticalmente la imagen y el texto */
+    gap: 40px; /* Espacio entre la imagen y el texto */
+}
+
+.sobre-mi-imagen {
+    flex: 1; /* Ocupa 1 parte del espacio */
+}
+
+.sobre-mi-imagen img {
+    width: 100%;
+    border-radius: 10px; /* Bordes redondeados para la foto */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    aspect-ratio: 1 / 1; /* Fuerza a que la imagen sea cuadrada */
+    object-fit: cover; /* Evita que la imagen se deforme */
+}
+
+.sobre-mi-texto {
+    flex: 2; /* Ocupa 2 partes (más espacio para el texto) */
+}
+
+.sobre-mi-texto h3 {
+    font-size: 2em; /* Título "Productor Autodidacta" */
+    color: var(--color-primario);
+    margin-bottom: 20px;
+}
+
+.sobre-mi-texto p {
+    font-size: 1.05em; /* Texto un poco más grande */
+    color: var(--color-texto-secundario);
+    margin-bottom: 20px;
+}
+
+.sobre-mi-texto p strong {
+    color: var(--color-texto); /* Resaltar partes clave (FL Studio, años) */
+    font-weight: 600;
+}
+
+/* --- Adaptabilidad para "Sobre Mí" --- */
+@media (max-width: 768px) {
+    .sobre-mi-contenido {
+        flex-direction: column; /* Apila la imagen y el texto en móviles */
+    }
+    
+    .sobre-mi-texto {
+        text-align: center; /* Centra el texto en móviles */
+    }
+
+    .sobre-mi-imagen {
+        width: 70%; /* Hace la imagen un poco más pequeña en móvil */
+        margin-bottom: 20px;
+    }
+}
