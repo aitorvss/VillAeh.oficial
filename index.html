@@ -13,11 +13,102 @@
 
 </head>
 <body>
+
     <header class="header-principal">
-        </header>
+        <div class="logo">TuLogo<span>.</span></div>
+        <nav class="nav-principal">
+            <ul>
+                <li><a href="#" class="activo">Inicio</a></li>
+                <li><a href="#beats">Beats</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <section class="seccion-hero" id="inicio">
-        </section>
+        <h2 class="hero-titulo">Ingeniero del Ritmo</h2>
+        <p class="hero-subtitulo">Beats de Trap, Reggaetón y Urbano desde el Home Studio</p>
+        <a href="#beat-pack" class="cta-button">Ver mis Beats</a>
+    </section>
 
-    </body>
+    <main class="contenedor-grid" id="beats">
+        
+        <h2 class="titulo-seccion">Mis Servicios</h2>
+
+        <article class="card">
+            <h3>Producción de Beats</h3>
+            <p>¿Buscas un sonido único para tu próximo tema? Trabajo con FL Studio para crear instrumentales potentes y originales que se adaptan a tu estilo. Desde el trap más oscuro hasta el reggaetón más pegajoso.</p>
+        </article>
+
+        <article class="card">
+            <h3>Mezcla y Máster</h3>
+            <p>Una buena producción necesita una mezcla limpia y un máster potente. Aplico mis conocimientos técnicos para que tu canción suene profesional y lista para competir en todas las plataformas.</p>
+        </article>
+
+        <article class="card">
+            <h3>Librerías de Sonido</h3>
+            <p>Descarga mis *drum kits* y *loops* exclusivos. Sonidos procesados y listos para arrastrar a tu DAW. Calidad de estudio para que puedas empezar a crear al instante.</p>
+        </article>
+
+    </main>
+    
+    <section id="beat-pack" class="seccion-beats">
+    
+    <h2 class="titulo-seccion">Beat Pack</h2>
+    <p class="subtitulo-seccion">Escucha mis últimas producciones de Trap y Reggaetón</p>
+
+    <div class="beats-grid">
+
+        <article class="beat-card">
+            <audio controls class="reproductor-audio">
+                <source src="beats/beat-noche-en-medallo.mp3" type="audio/mpeg">
+                Tu navegador no soporta el audio.
+            </audio>
+            <div class="beat-card-contenido">
+                <h3 class="beat-titulo">Noche en Medallo</h3>
+                <div class="beat-info">
+                    <p><strong>Tempo:</strong> <span>92 BPM</span></p>
+                    <p><strong>Escala:</strong> <span>Do menor</span></p>
+                </div>
+            </div>
+        </article>
+
+        <article class="beat-card">
+            <audio controls class="reproductor-audio">
+                <source src="beats/beat-diamante.mp3" type="audio/mpeg">
+                Tu navegador no soporta el audio.
+            </audio>
+            <div class="beat-card-contenido">
+                <h3 class="beat-titulo">Diamante</h3>
+                <div class="beat-info">
+                    <p><strong>Tempo:</strong> <span>110 BPM</span></p>
+                    <p><strong>Escala:</strong> <span>Fa# menor</span></p>
+                </div>
+            </div>
+        </article>
+
+        <article class="beat-card">
+            <audio controls class="reproductor-audio">
+                <source src="beats/beat-sin-senal.mp3" type="audio/mpeg">
+                Tu navegador no soporta el audio.
+            </audio>
+            <div class="beat-card-contenido">
+                <h3 class="beat-titulo">Sin Señal</h3>
+                <div class="beat-info">
+                    <p><strong>Tempo:</strong> <span>88 BPM</span></p>
+                    <p><strong>Escala:</strong> <span>Sol menor</span></p>
+                </div>
+            </div>
+        </article>
+        
+        </div>
+</section>
+
+    <footer class="footer-principal" id="contacto">
+        <p>&copy; 2025 - TuNombreArtístico. Todos los derechos reservados.</p>
+        <p>Hecho con ☕ y FL Studio.</p>
+    </footer>
+
+</body>
 </html>

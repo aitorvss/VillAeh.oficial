@@ -1,15 +1,297 @@
 /* --- 1. Variables CSS (Paleta de Colores) --- */
+/* ¡Modifica estos colores para cambiar todo el tema! */
 :root {
-    --color-fondo: #121212;
-    --color-superficie: #1e1e1e;
-    /* ... (Todo tu CSS sigue aquí) ... */
+    --color-fondo: #121212;         /* Negro casi puro (Spotify) */
+    --color-superficie: #1e1e1e;   /* Gris oscuro para tarjetas */
+    --color-primario: #8A2BE2;     /* Violeta Eléctrico (Acento) */
+    --color-primario-rgb: 138, 43, 226; /* Versión RGB para sombras */
+    --color-texto: #f0f0f0;         /* Blanco grisáceo */
+    --color-texto-secundario: #a0a0a0;
+    --fuente-principal: 'Poppins', sans-serif;
 }
 
 /* --- 2. Reseteo y Estilos Globales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
+
 body {
     font-family: var(--fuente-principal);
     background-color: var(--color-fondo);
-    /* ... (Todo tu CSS sigue aquí) ... */
+    color: var(--color-texto);
+    line-height: 1.7;
 }
 
-/* ... el resto de tu CSS ... */
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+a {
+    color: var(--color-primario);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-texto);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* --- 3. Encabezado y Navegación --- */
+.header-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%; /* 5% de margen lateral */
+    background-color: rgba(30, 30, 30, 0.8); /* Fondo semi-transparente */
+    backdrop-filter: blur(10px); /* Efecto "blur" de cristal */
+    border-bottom: 1px solid #333;
+    position: sticky; /* Se queda fijo al hacer scroll */
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.logo span {
+    color: var(--color-primario); /* Acento en el logo */
+}
+
+.nav-principal ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav-principal li {
+    margin-left: 25px;
+}
+
+.nav-principal a {
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-principal a:hover,
+.nav-principal a.activo {
+    background-color: var(--color-primario);
+    color: var(--color-texto);
+}
+
+/* --- 4. Sección "Hero" (El gran impacto inicial) --- */
+.seccion-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 60vh; /* Ocupa el 60% de la altura de la pantalla */
+    padding: 40px 20px;
+    /* Imagen de fondo genérica. ¡Deberías cambiarla! */
+    background: linear-gradient(rgba(0,0,0,0.5), var(--color-fondo)), url('https://via.placeholder.com/1500x800.png/121212/8A2BE2?text=Tu+Foto+de+Estudio+Aquí') no-repeat center center/cover;
+}
+
+.hero-titulo {
+    font-size: 3.5em; /* Tamaño grande */
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.hero-subtitulo {
+    font-size: 1.5em;
+    color: var(--color-texto-secundario);
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.cta-button { /* Call To Action (Llamada a la Acción) */
+    background: var(--color-primario);
+    color: var(--color-texto);
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 15px 30px;
+    border-radius: 50px; /* Botón "píldora" */
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(var(--color-primario-rgb), 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 25px rgba(var(--color-primario-rgb), 0.6);
+    color: var(--color-texto);
+}
+
+/* --- 5. Contenedor Principal (Con CSS Grid) --- */
+.contenedor-grid {
+    max-width: 1200px;
+    margin: 50px auto; /* Centrado */
+    padding: 0 20px;
+    
+    /* ¡La magia de Grid! */
+    display: grid;
+    /* Columnas: se ajustan automáticamente. Mínimo 300px, máximo 1fr (fracción de espacio) */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; /* Espacio entre tarjetas */
+}
+
+.titulo-seccion {
+    /* Ocupa todas las columnas de la fila en la que esté */
+    grid-column: 1 / -1; 
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--color-primario);
+}
+
+/* --- 6. Tarjetas (Cards) --- */
+.card {
+    background-color: var(--color-superficie);
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid #282828;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px); /* Se eleva al pasar el ratón */
+    box-shadow: 0 10px 20px rgba(var(--color-primario-rgb), 0.2);
+}
+
+.card h3 {
+    font-size: 1.8em;
+    color: var(--color-primario);
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: var(--color-texto-secundario);
+    font-size: 0.95em;
+}
+
+/* --- 7. Pie de Página --- */
+.footer-principal {
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+    background-color: var(--color-superficie);
+    border-top: 1px solid #333;
+    font-size: 0.9em;
+    color: var(--color-texto-secundario);
+}
+
+/* --- 8. Adaptabilidad (Responsive) --- */
+@media (max-width: 768px) {
+    .header-principal {
+        flex-direction: column; /* Apila logo y nav */
+        padding: 15px;
+    }
+    
+    .nav-principal ul {
+        margin-top: 15px;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .nav-principal li {
+        margin: 0 10px;
+    }
+
+    .hero-titulo {
+        font-size: 2.5em; /* Más pequeño en móviles */
+    }
+
+    .hero-subtitulo {
+        font-size: 1.2em;
+    }
+}
+
+/* --- 9. Estilos de la Nueva Sección de Beats --- */
+
+.seccion-beats {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.subtitulo-seccion {
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--color-texto-secundario);
+    margin-top: -20px;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.beats-grid {
+    display: grid;
+    /* Columnas: se ajustan solas. Mínimo 320px */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px; /* Espacio entre tarjetas */
+}
+
+.beat-card {
+    background-color: var(--color-superficie);
+    border-radius: 12px;
+    border: 1px solid #282828;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    overflow: hidden; /* Oculta lo que se salga (para el borde redondeado) */
+    transition: transform 0.3s ease;
+}
+
+.beat-card:hover {
+    transform: translateY(-5px);
+}
+
+.reproductor-audio {
+    width: 100%;
+    /* Filtro para que el reproductor combine con el dark mode */
+    filter: invert(1) hue-rotate(180deg) brightness(0.7) saturate(0.3);
+}
+
+.beat-card-contenido {
+    padding: 20px;
+}
+
+.beat-titulo {
+    font-size: 1.6em;
+    color: var(--color-primario);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.beat-info {
+    display: flex;
+    justify-content: space-between; /* Pone Tempo a la izq. y Escala a la der. */
+    font-size: 0.95em;
+    color: var(--color-texto);
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}
+
+.beat-info p {
+    margin: 0;
+}
+
+.beat-info strong {
+    color: var(--color-texto-secundario); /* "Tempo:" y "Escala:" en gris */
+    font-weight: 400;
+    margin-right: 8px;
+}
