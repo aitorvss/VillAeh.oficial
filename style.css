@@ -599,3 +599,18 @@ img {
     max-height: 300px; /* Lo hace visible (ajusta si la respuesta es muy larga) */
     padding-bottom: 10px;
 }
+
+/* ============================================= */
+/* ========= ESTILOS BOTÓN TIENDA AIRBIT ======= */
+/* ============================================= */
+
+.tienda-boton-container {
+    text-align: center; /* Centra el botón */
+    margin: 40px 0;
+}
+
+.tienda-boton-container .cta-button {
+    /* Hacemos el botón un poco más grande */
+    font-size: 1.3rem;
+    padding: 20px 40px;
+}
