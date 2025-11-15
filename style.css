@@ -61,10 +61,9 @@ img {
     z-index: 100;
 }
 
-.logo {
-    font-size: 1.8em;
-    font-weight: 700;
-    color: var(--color-texto);
+.logo-imagen {
+    height: 50px; /* Tamaño del logo en el header */
+    width: auto; /* Mantiene la proporción */
 }
 
 .logo span {
@@ -103,7 +102,7 @@ img {
     min-height: 60vh; /* Ocupa el 60% de la altura de la pantalla */
     padding: 40px 20px;
     /* Imagen de fondo genérica. ¡Deberías cambiarla! */
-    background: linear-gradient(rgba(0,0,0,0.5), var(--color-fondo)), url('https://via.placeholder.com/1500x800.png/121212/8A2BE2?text=Tu+Foto+de+Estudio+Aquí') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.5), var(--color-fondo)), url('/img/Home-studio-2.jpg') no-repeat center center/cover;
 }
 
 .hero-titulo {
@@ -361,3 +360,64 @@ img {
         margin-bottom: 20px;
     }
 }
+
+/* --- 11. Estilos de la Nueva Sección "Contacto" --- */
+
+.seccion-contacto {
+    max-width: 900px; /* Un poco más estrecho para centrar la atención */
+    margin: 50px auto;
+    padding: 40px;
+    text-align: center;
+}
+
+.contacto-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Espacio entre el email y los iconos */
+}
+
+/* Estilo para el botón de email, reutilizando .cta-button */
+.email-button {
+    background: var(--color-superficie); /* Fondo diferente */
+    border: 2px solid var(--color-primario);
+    color: var(--color-primario);
+    font-size: 1.2em;
+    width: 100%;
+    max-width: 550px;
+    border-radius: 12px; /* Ancho máximo para el botón */
+}
+
+.email-button:hover {
+    background: var(--color-primario);
+    color: var(--color-texto);
+    box-shadow: 0 8px 25px rgba(var(--color-primario-rgb), 0.6);
+}
+
+.email-button i {
+    margin-right: 12px; /* Espacio entre el icono y el texto */
+}
+
+/* Contenedor de los iconos sociales */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Aumentamos el espacio */
+    flex-wrap: wrap; /* Para que se apilen si no caben */
+}
+
+.social-icon {
+    font-size: 2.8em; /* Tamaño de los iconos */
+    color: var(--color-texto-secundario);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.2) translateY(-3px);
+}
+
+/* Colores específicos para cada red (al pasar el ratón) */
+.social-icon.instagram:hover { color: #E4405F; }
+.social-icon.youtube:hover { color: #FF0000; }
+.social-icon.tiktok:hover { color: #FFFFFF; } /* TikTok brilla en blanco */
+.social-icon.soundcloud:hover { color: #FF5500; }
