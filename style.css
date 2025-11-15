@@ -1,11 +1,10 @@
 /* --- 1. Variables CSS (Paleta de Colores) --- */
-/* ¡Modifica estos colores para cambiar todo el tema! */
 :root {
-    --color-fondo: #121212;         /* Negro casi puro (Spotify) */
-    --color-superficie: #1e1e1e;   /* Gris oscuro para tarjetas */
-    --color-primario: #8A2BE2;     /* Violeta Eléctrico (Acento) */
-    --color-primario-rgb: 138, 43, 226; /* Versión RGB para sombras */
-    --color-texto: #f0f0f0;         /* Blanco grisáceo */
+    --color-fondo: #121212;
+    --color-superficie: #1e1e1e;
+    --color-primario: #8A2BE2;
+    --color-primario-rgb: 138, 43, 226;
+    --color-texto: #f0f0f0;
     --color-texto-secundario: #a0a0a0;
     --fuente-principal: 'Poppins', sans-serif;
 }
@@ -17,10 +16,8 @@
     box-sizing: border-box;
 }
 
-/* ESTA ES LA SOLUCIÓN */
 html {
-    scroll-behavior: smooth; /* Desplazamiento suave */
-
+    scroll-behavior: smooth;
     scroll-padding-top: 200px;
 }
 
@@ -29,6 +26,8 @@ body {
     background-color: var(--color-fondo);
     color: var(--color-texto);
     line-height: 1.7;
+    /* Evita el scroll horizontal si algo se desborda */
+    overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -55,22 +54,22 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%; /* 5% de margen lateral */
-    background-color: rgba(30, 30, 30, 0.8); /* Fondo semi-transparente */
-    backdrop-filter: blur(10px); /* Efecto "blur" de cristal */
+    padding: 20px 5%;
+    background-color: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid #333;
-    position: sticky; /* Se queda fijo al hacer scroll */
+    position: sticky;
     top: 0;
     z-index: 100;
 }
 
 .logo-imagen {
-    height: 50px; /* Tamaño del logo en el header */
-    width: auto; /* Mantiene la proporción */
+    height: 50px;
+    width: auto;
 }
 
 .logo span {
-    color: var(--color-primario); /* Acento en el logo */
+    color: var(--color-primario);
 }
 
 .nav-principal ul {
@@ -95,6 +94,19 @@ img {
     color: var(--color-texto);
 }
 
+/* ============================================= */
+/* ========= ESTILOS MENÚ HAMBURGUESA ========== */
+/* ============================================= */
+.menu-toggle-btn {
+    display: none; /* Oculto por defecto en escritorio */
+    font-size: 1.8em;
+    color: var(--color-texto);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 110; /* Por encima del menú overlay */
+}
+
 /* --- 4. Sección "Hero" (El gran impacto inicial) --- */
 .seccion-hero {
     display: flex;
@@ -102,14 +114,14 @@ img {
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: 60vh; /* Ocupa el 60% de la altura de la pantalla */
+    min-height: 60vh;
     padding: 40px 20px;
-    /* Imagen de fondo genérica. ¡Deberías cambiarla! */
-    background: linear-gradient(rgba(0,0,0,0.5), var(--color-fondo)), url('/img/Home-studio-2.jpg') no-repeat center center/cover;
+    /* CORRECCIÓN: Quitada la barra / inicial para que la ruta sea relativa */
+    background: linear-gradient(rgba(0,0,0,0.5), var(--color-fondo)), url('img/Home-studio-2.jpg') no-repeat center center/cover;
 }
 
 .hero-titulo {
-    font-size: 3.5em; /* Tamaño grande */
+    font-size: 3.5em;
     font-weight: 700;
     margin-bottom: 15px;
     text-shadow: 0 4px 10px rgba(0,0,0,0.5);
@@ -122,13 +134,13 @@ img {
     margin-bottom: 30px;
 }
 
-.cta-button { /* Call To Action (Llamada a la Acción) */
+.cta-button {
     background: var(--color-primario);
     color: var(--color-texto);
     font-size: 1.1em;
     font-weight: 600;
     padding: 15px 30px;
-    border-radius: 50px; /* Botón "píldora" */
+    border-radius: 50px;
     text-transform: uppercase;
     box-shadow: 0 4px 15px rgba(var(--color-primario-rgb), 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -143,19 +155,15 @@ img {
 /* --- 5. Contenedor Principal (Con CSS Grid) --- */
 .contenedor-grid {
     max-width: 1200px;
-    margin: 50px auto; /* Centrado */
+    margin: 50px auto;
     padding: 0 20px;
-    
-    /* ¡La magia de Grid! */
     display: grid;
-    /* Columnas: se ajustan automáticamente. Mínimo 300px, máximo 1fr (fracción de espacio) */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px; /* Espacio entre tarjetas */
+    gap: 25px;
 }
 
 .titulo-seccion {
-    /* Ocupa todas las columnas de la fila en la que esté */
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1;
     text-align: center;
     font-size: 2.5em;
     margin-bottom: 20px;
@@ -173,7 +181,7 @@ img {
 }
 
 .card:hover {
-    transform: translateY(-8px); /* Se eleva al pasar el ratón */
+    transform: translateY(-8px);
     box-shadow: 0 10px 20px rgba(var(--color-primario-rgb), 0.2);
 }
 
@@ -199,34 +207,94 @@ img {
     color: var(--color-texto-secundario);
 }
 
-/* --- 8. Adaptabilidad (Responsive) --- */
+/* ============================================= */
+/* ========= RESPONSIVE Y MENÚ MÓVIL ========== */
+/* ============================================= */
 @media (max-width: 768px) {
-    .header-principal {
-        flex-direction: column; /* Apila logo y nav */
-        padding: 15px;
-    }
     
-    .nav-principal ul {
-        margin-top: 15px;
-        justify-content: center;
+    .header-principal {
+        /* Mantenemos el logo a la izq. y el icono a la der. */
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 5%; /* Ajustado el padding para móvil */
+    }
+
+    /* --- ESTILOS DEL MENÚ MÓVIL --- */
+
+    .menu-toggle-btn {
+        display: block; /* Mostramos el botón hamburguesa */
+    }
+
+    .nav-principal {
+        /* Convertimos el nav en un overlay a pantalla completa */
+        position: fixed;
+        top: 0;
+        right: 0;
         width: 100%;
+        height: 100vh; /* Alto total de la pantalla */
+        background-color: rgba(18, 18, 18, 0.95); /* Fondo oscuro */
+        backdrop-filter: blur(10px);
+        
+        /* Oculto por defecto (movido a la derecha) */
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        
+        /* Centrar los enlaces verticalmente */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        z-index: 105; /* Por debajo del botón (110) pero encima de todo */
+    }
+
+    .nav-principal.menu-abierto {
+        transform: translateX(0); /* Lo trae a la vista */
+    }
+
+    .nav-principal ul {
+        flex-direction: column; /* Apila los enlaces verticalmente */
+        align-items: center;
+        gap: 30px; /* Espacio entre enlaces */
+        margin-top: 0;
+        width: auto;
     }
     
     .nav-principal li {
-        margin: 0 10px;
+        margin-left: 0; /* Reseteamos el margen de PC */
     }
 
+    .nav-principal a {
+        /* Hacemos los enlaces grandes y fáciles de pulsar */
+        font-size: 1.8em;
+        padding: 15px 30px;
+    }
+
+    /* --- OTROS AJUSTES MÓVIL --- */
+
     .hero-titulo {
-        font-size: 2.5em; /* Más pequeño en móviles */
+        font-size: 2.5em;
     }
 
     .hero-subtitulo {
         font-size: 1.2em;
     }
+
+    .sobre-mi-contenido {
+        flex-direction: column;
+    }
+    
+    .sobre-mi-texto {
+        text-align: center;
+    }
+
+    .sobre-mi-imagen {
+        width: 70%;
+        margin-bottom: 20px;
+    }
 }
 
 /* --- 9. Estilos de la Nueva Sección de Beats --- */
-
 .seccion-beats {
     max-width: 1200px;
     margin: 50px auto;
@@ -244,9 +312,8 @@ img {
 
 .beats-grid {
     display: grid;
-    /* Columnas: se ajustan solas. Mínimo 320px */
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px; /* Espacio entre tarjetas */
+    gap: 30px;
 }
 
 .beat-card {
@@ -254,7 +321,7 @@ img {
     border-radius: 12px;
     border: 1px solid #282828;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    overflow: hidden; /* Oculta lo que se salga (para el borde redondeado) */
+    overflow: hidden;
     transition: transform 0.3s ease;
 }
 
@@ -264,7 +331,6 @@ img {
 
 .reproductor-audio {
     width: 100%;
-    /* Filtro para que el reproductor combine con el dark mode */
     filter: invert(1) hue-rotate(180deg) brightness(0.7) saturate(0.3);
 }
 
@@ -281,7 +347,7 @@ img {
 
 .beat-info {
     display: flex;
-    justify-content: space-between; /* Pone Tempo a la izq. y Escala a la der. */
+    justify-content: space-between;
     font-size: 0.95em;
     color: var(--color-texto);
     border-top: 1px solid #333;
@@ -293,81 +359,63 @@ img {
 }
 
 .beat-info strong {
-    color: var(--color-texto-secundario); /* "Tempo:" y "Escala:" en gris */
+    color: var(--color-texto-secundario);
     font-weight: 400;
     margin-right: 8px;
 }
 
 /* --- 10. Estilos de la Nueva Sección "Sobre Mí" --- */
-
 .seccion-sobre-mi {
     max-width: 1200px;
     margin: 50px auto;
     padding: 40px 20px;
-    background-color: var(--color-superficie); /* Un fondo sutil para destacarla */
+    background-color: var(--color-superficie);
     border-radius: 12px;
     border: 1px solid #282828;
 }
 
 .sobre-mi-contenido {
     display: flex;
-    align-items: center; /* Centra verticalmente la imagen y el texto */
-    gap: 40px; /* Espacio entre la imagen y el texto */
+    align-items: center;
+    gap: 40px;
 }
 
 .sobre-mi-imagen {
-    flex: 1; /* Ocupa 1 parte del espacio */
+    flex: 1;
 }
 
 .sobre-mi-imagen img {
     width: 100%;
-    border-radius: 10px; /* Bordes redondeados para la foto */
+    border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    aspect-ratio: 1 / 1; /* Fuerza a que la imagen sea cuadrada */
-    object-fit: cover; /* Evita que la imagen se deforme */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
 }
 
 .sobre-mi-texto {
-    flex: 2; /* Ocupa 2 partes (más espacio para el texto) */
+    flex: 2;
 }
 
 .sobre-mi-texto h3 {
-    font-size: 2em; /* Título "Productor Autodidacta" */
+    font-size: 2em;
     color: var(--color-primario);
     margin-bottom: 20px;
 }
 
 .sobre-mi-texto p {
-    font-size: 1.05em; /* Texto un poco más grande */
+    font-size: 1.05em;
     color: var(--color-texto-secundario);
     margin-bottom: 20px;
 }
 
 .sobre-mi-texto p strong {
-    color: var(--color-texto); /* Resaltar partes clave (FL Studio, años) */
+    color: var(--color-texto);
     font-weight: 600;
 }
 
-/* --- Adaptabilidad para "Sobre Mí" --- */
-@media (max-width: 768px) {
-    .sobre-mi-contenido {
-        flex-direction: column; /* Apila la imagen y el texto en móviles */
-    }
-    
-    .sobre-mi-texto {
-        text-align: center; /* Centra el texto en móviles */
-    }
-
-    .sobre-mi-imagen {
-        width: 70%; /* Hace la imagen un poco más pequeña en móvil */
-        margin-bottom: 20px;
-    }
-}
-
 /* --- 11. Estilos de la Nueva Sección "Contacto" --- */
-
 .seccion-contacto {
-    max-width: 900px; /* Un poco más estrecho para centrar la atención */
+    max-width: 900px;
     margin: 50px auto;
     padding: 40px;
     text-align: center;
@@ -377,18 +425,17 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px; /* Espacio entre el email y los iconos */
+    gap: 40px;
 }
 
-/* Estilo para el botón de email, reutilizando .cta-button */
 .email-button {
-    background: var(--color-superficie); /* Fondo diferente */
+    background: var(--color-superficie);
     border: 2px solid var(--color-primario);
     color: var(--color-primario);
     font-size: 1.2em;
     width: 100%;
     max-width: 550px;
-    border-radius: 12px; /* Ancho máximo para el botón */
+    border-radius: 12px;
 }
 
 .email-button:hover {
@@ -398,19 +445,18 @@ img {
 }
 
 .email-button i {
-    margin-right: 12px; /* Espacio entre el icono y el texto */
+    margin-right: 12px;
 }
 
-/* Contenedor de los iconos sociales */
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 30px; /* Aumentamos el espacio */
-    flex-wrap: wrap; /* Para que se apilen si no caben */
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
 .social-icon {
-    font-size: 2.8em; /* Tamaño de los iconos */
+    font-size: 2.8em;
     color: var(--color-texto-secundario);
     transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -419,8 +465,7 @@ img {
     transform: scale(1.2) translateY(-3px);
 }
 
-/* Colores específicos para cada red (al pasar el ratón) */
 .social-icon.instagram:hover { color: #E4405F; }
 .social-icon.youtube:hover { color: #FF0000; }
-.social-icon.tiktok:hover { color: #FFFFFF; } /* TikTok brilla en blanco */
+.social-icon.tiktok:hover { color: #FFFFFF; }
 .social-icon.soundcloud:hover { color: #FF5500; }

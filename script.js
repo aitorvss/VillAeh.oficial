@@ -1,50 +1,77 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // Inicializar AOS para las animaciones al hacer scroll
+    AOS.init({
+        duration: 800, // Duración de la animación en milisegundos
+        once: true     // Las animaciones solo se ejecutan una vez
+    });
 
+    // =============================================
+    // ========= LÓGICA MENÚ HAMBURGUESA ===========
+    // =============================================
+    const menuToggleBtn = document.querySelector('.menu-toggle-btn');
+    const navPrincipal = document.querySelector('.nav-principal');
+    const navIcon = menuToggleBtn.querySelector('i'); // El icono <i> dentro del botón
+    
+    // 1. Abrir/Cerrar con el botón
+    menuToggleBtn.addEventListener('click', () => {
+        navPrincipal.classList.toggle('menu-abierto');
+        
+        // Cambiar el icono (de ☰ a X y viceversa)
+        if (navPrincipal.classList.contains('menu-abierto')) {
+            navIcon.classList.remove('fa-bars');
+            navIcon.classList.add('fa-times');
+        } else {
+            navIcon.classList.remove('fa-times');
+            navIcon.classList.add('fa-bars');
+        }
+    });
+
+    // 2. Cerrar el menú al hacer clic en un enlace
     const navLinks = document.querySelectorAll('.nav-principal a');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Solo cerramos si el menú está abierto (en modo móvil)
+            if (navPrincipal.classList.contains('menu-abierto')) {
+                navPrincipal.classList.remove('menu-abierto');
+                navIcon.classList.remove('fa-times');
+                navIcon.classList.add('fa-bars');
+            }
+        });
+    });
+
+    // =============================================
+    // ========= LÓGICA DE SCROLL ACTIVO ===========
+    // =============================================
+    
     const sections = document.querySelectorAll('section[id]');
     
-    // Un "margen" para que el enlace se active un poco antes
-    const offset = 250; 
+    // CORRECCIÓN: Tu CSS usa 200px de padding, el offset debe coincidir.
+    const offset = 200; 
 
     const updateActiveLink = () => {
         
         const scrollPosition = window.scrollY;
         
-        // --- LA COMPROBACIÓN ESPECIAL ---
-        // Comprueba si el usuario está al final de la página
-        // (Añadimos un pequeño búfer de 10px por si acaso)
         const atBottom = (window.innerHeight + scrollPosition) >= document.body.scrollHeight - 10;
 
         let currentSectionId = '';
 
         if (atBottom) {
-            // SI ESTÁS AL FINAL: Forzamos que la sección activa
-            // sea la última de la lista (es decir, "contacto")
             currentSectionId = sections[sections.length - 1].id;
-            
         } else {
-            // SI NO ESTÁS AL FINAL: Usamos la lógica normal
-            // Recorremos todas las secciones...
             sections.forEach(section => {
-                // ...y si hemos pasado el inicio de una sección (con el offset)
                 if ((scrollPosition + offset) >= section.offsetTop) {
-                    // ...la marcamos como la sección actual
                     currentSectionId = section.id;
                 }
             });
         }
         
-        // --- CASO ESPECIAL PARA "INICIO" ---
-        // Si después de todo, no hay sección (estamos arriba del todo),
-        // y el primer enlace es #inicio, lo activamos.
         if (currentSectionId === '' && navLinks.length > 0 && navLinks[0].getAttribute('href') === '#inicio') {
             currentSectionId = 'inicio';
         }
-
         
-        // --- ACTUALIZAR LAS CLASES ---
-        // Finalmente, recorremos los enlaces y ponemos "activo"
-        // solo al que coincida con la sección actual.
         navLinks.forEach(link => {
             link.classList.remove('activo');
             
@@ -56,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Ejecutamos la función al hacer scroll y al cargar la página
     window.addEventListener('scroll', updateActiveLink);
     updateActiveLink(); 
 });
