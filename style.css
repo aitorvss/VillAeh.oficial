@@ -17,8 +17,11 @@
     box-sizing: border-box;
 }
 
+/* ESTA ES LA SOLUCIÓN */
 html {
     scroll-behavior: smooth; /* Desplazamiento suave */
+
+    scroll-padding-top: 200px;
 }
 
 body {
